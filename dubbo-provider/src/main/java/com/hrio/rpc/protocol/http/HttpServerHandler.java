@@ -1,7 +1,8 @@
 package com.hrio.rpc.protocol.http;
 
+import com.hrio.rpc.RegisterType;
 import com.hrio.rpc.api.entity.Invocation;
-import com.hrio.rpc.register.LocalRegister;
+import com.hrio.rpc.factory.LocalRegisterFactory;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,6 @@ import java.lang.reflect.Method;
 public class HttpServerHandler {
     public void handler(HttpServletRequest req, HttpServletResponse resp) {
         // 处理请求，返回结果，也就是执行服务
-
         try {
             // 1.从请求中拿出Invocation对象
             InputStream inputStream = req.getInputStream();
@@ -24,7 +24,7 @@ public class HttpServerHandler {
 
             // 2.从Invocation对象中拿出实现类、方法、参数类型列表和参数列表
 
-            Class implClass = LocalRegister.get(invocation.getInterfaceName());// 从本地注册中拿出实现类
+            Class implClass = LocalRegisterFactory.getLocalRegister(RegisterType.LOCAL).get(invocation.getInterfaceName());// 从本地注册中拿出实现类
 
             Method method = implClass.getMethod(invocation.getMethodName(), invocation.getParamTypes());// 拿出method对象
 
@@ -34,7 +34,7 @@ public class HttpServerHandler {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-
+            e.printStackTrace();
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

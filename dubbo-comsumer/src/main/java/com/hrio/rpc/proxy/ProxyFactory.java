@@ -1,9 +1,11 @@
 package com.hrio.rpc.proxy;
 
+import com.hrio.rpc.RegisterType;
 import com.hrio.rpc.api.entity.Invocation;
 import com.hrio.rpc.api.entity.URL;
+import com.hrio.rpc.factory.RemoteRegisterFactory;
 import com.hrio.rpc.protocol.http.client.HttpClient;
-import com.hrio.rpc.register.RemoteRegister;
+import com.hrio.rpc.register.local.RemoteMapRegister;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -18,7 +20,7 @@ public class ProxyFactory {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 HttpClient httpClient = new HttpClient();
                 Invocation invocation = new Invocation(interfaceClass.getName(), method.getName(), method.getParameterTypes(), args);
-                URL url = RemoteRegister.getRandomUrl(interfaceClass.getName());
+                URL url = RemoteRegisterFactory.getRemoteRegister(RegisterType.LOCAL).getRandomUrl(interfaceClass.getName());
                 String result = httpClient.post(url.getHostname(), url.getPort(), invocation);
                 return result;
             }

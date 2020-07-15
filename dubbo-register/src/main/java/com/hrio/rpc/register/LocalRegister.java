@@ -1,16 +1,18 @@
 package com.hrio.rpc.register;
 
-import java.util.HashMap;
-import java.util.Map;
+public interface LocalRegister {
 
-public class LocalRegister {
-    private static Map<String, Class> map = new HashMap<>();
+    /**
+     * 注册到本地
+     * @param interfaceName 接口名称
+     * @param interfaceImplClass 接口实现类
+     */
+    void register(String interfaceName,Class interfaceImplClass);
 
-    public static void register(String interfaceName, Class implClass) {
-        map.put(interfaceName, implClass);
-    }
-
-    public static Class get(String interfaceName) {
-        return map.get(interfaceName);
-    }
+    /**
+     * 根据接口名获取实现类
+     * @param interfaceName 接口名称
+     * @return
+     */
+    Class get(String interfaceName);
 }
