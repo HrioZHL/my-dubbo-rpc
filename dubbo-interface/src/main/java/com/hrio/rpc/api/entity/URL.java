@@ -1,9 +1,11 @@
 package com.hrio.rpc.api.entity;
 
+import java.io.Serializable;
+
 /**
  * schema://hostname:port
  */
-public class URL {
+public class URL implements Serializable {
 
     private String hostname;
     private Integer port;
