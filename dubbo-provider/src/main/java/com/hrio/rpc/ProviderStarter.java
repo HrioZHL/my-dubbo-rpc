@@ -4,7 +4,7 @@ import com.hrio.rpc.api.GreetingService;
 import com.hrio.rpc.api.entity.URL;
 import com.hrio.rpc.factory.LocalRegisterFactory;
 import com.hrio.rpc.factory.RemoteRegisterFactory;
-import com.hrio.rpc.protocol.http.HttpServer;
+import com.hrio.rpc.protocol.dubbo.NettyProtocol;
 import com.hrio.rpc.provider.GreetingServiceImpl;
 import com.hrio.rpc.register.LocalRegister;
 import com.hrio.rpc.register.RemoteRegister;
@@ -23,9 +23,12 @@ public class ProviderStarter {
         RemoteRegister remoteRegister = RemoteRegisterFactory.getRemoteRegister(RegisterType.LOCAL);
         remoteRegister.register(GreetingService.class.getName(), url);
 
-        // 3.启动Tomcat
-        HttpServer httpServer = new HttpServer();
-        httpServer.start("localhost", 8080);
+        // 3.启动Tomcat或Netty
+//        HttpProtocol httpProtocol = new HttpProtocol();
+//        httpProtocol.start(url);
+
+        NettyProtocol nettyProtocol = new NettyProtocol();
+        nettyProtocol.start(url);
 
     }
 }
