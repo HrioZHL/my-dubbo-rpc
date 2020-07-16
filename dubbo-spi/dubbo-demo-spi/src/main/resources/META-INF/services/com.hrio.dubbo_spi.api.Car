@@ -1,0 +1,3 @@
+black = com.hrio.dubbo_spi.impl.BlackCar
+red = com.hrio.dubbo_spi.impl.RedCar
+com.hrio.dubbo_spi.impl.CarWrapper

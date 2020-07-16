@@ -13,6 +13,7 @@
         <module>dubbo-provider</module>
         <module>dubbo-register</module>
         <module>dubbo-comsumer</module>
+        <module>dubbo-spi</module>
     </modules>
 
     <dependencyManagement>

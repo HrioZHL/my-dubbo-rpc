@@ -31,6 +31,10 @@ public class ProtocolFactory {
         ServiceLoader<Protocol> serviceLoader = ServiceLoader.load(Protocol.class);
         Iterator<Protocol> iterator = serviceLoader.iterator();
         return iterator.next();// 只能返回一个协议？所以Dubbo实现了自己的SPI机制
+
+        //Java SPI
+        //1.不能单独的获取某个指定的实现类
+        //2.没有IOC和AOP机制
     }
 
     public static Protocol getProtocolByVMOptions() {
