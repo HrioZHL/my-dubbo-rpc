@@ -7,7 +7,7 @@ public class DubboCarDemoStarter {
     public static void main(String[] args) {
         ExtensionLoader<Car> extensionLoader = ExtensionLoader.getExtensionLoader(Car.class);
         Car redCar = extensionLoader.getExtension("red");
-        redCar.getColor();
+        redCar.getColor(null);
 //        Car blackCar = extensionLoader.getExtension("black");
 //        blackCar.getColor();
     }
