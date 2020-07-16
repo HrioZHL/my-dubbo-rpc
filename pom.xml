@@ -32,15 +32,17 @@
                 <artifactId>dubbo-register</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
             <dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
                 <artifactId>tomcat-embed-core</artifactId>
-                <version>8.5.15</version>
+                <version>9.0.37</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
-                <version>4.0.9.Final</version>
+                <version>4.1.42.Final</version>
             </dependency>
             <dependency>
                 <groupId>commons-io</groupId>
