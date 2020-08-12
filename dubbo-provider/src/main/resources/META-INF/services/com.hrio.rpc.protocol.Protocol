@@ -1,1 +1,1 @@
-com.hrio.rpc.protocol.dubbo.NettyProtocol
+com.hrio.rpc.protocol.dubbo.HttpProtocol

@@ -17,7 +17,7 @@ public class ProviderStarter {
         URL url = new URL("localhost", 8080);
 
         // 1.本地注册
-        // (服务名、实现类)存到Map里
+        // (服务名、实现类)存到Map里 ，需要根据服务名找到实现类
         LocalRegister localRegister = LocalRegisterFactory.getLocalRegister(RegisterType.LOCAL);
         localRegister.register(GreetingService.class.getName(), GreetingServiceImpl.class);
 

@@ -1,5 +1,8 @@
 package com.hrio.rpc.register;
 
+/**
+ * 供服务端自己在反射调用的时候根据服务名称找到对应的实现
+ */
 public interface LocalRegister {
 
     /**

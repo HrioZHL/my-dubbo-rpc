@@ -33,6 +33,7 @@ public class HttpServer implements RpcServer {
         service.setContainer(engine);
         service.addConnector(connector);
 
+        // 需要写一个servlet加到tomcat中，才能接收请求
         tomcat.addServlet(contextPath, "dispather", new DispatcherServlet());
         context.addServletMappingDecoded("/*", "dispather");// 所有请求都经过这个servlet
         try {

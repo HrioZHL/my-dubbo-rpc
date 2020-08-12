@@ -4,7 +4,7 @@ import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.extension.Adaptive;
 import org.apache.dubbo.common.extension.SPI;
 
-@SPI(value = "black") //可以指定默认的实现类
+@SPI//通过@SPI(value = "black")可以指定默认的实现类
 public interface Car {
     @Adaptive(value = "carType")
     void getColor(URL url);

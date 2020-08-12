@@ -10,5 +10,5 @@ public interface RpcServer {
      * @param hostName
      * @param port
      */
-    public void start(String hostName, int port);
+    void start(String hostName, int port);
 }

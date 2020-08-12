@@ -2,6 +2,9 @@ package com.hrio.rpc.register;
 
 import com.hrio.rpc.api.entity.URL;
 
+/**
+ * 消费者端根据服务名字找对应的地址发起远程调用
+ */
 public interface RemoteRegister {
 
     /**

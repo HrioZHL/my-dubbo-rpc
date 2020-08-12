@@ -19,16 +19,17 @@ public class HttpServerHandler {
         try {
             // 1.从请求中拿出Invocation对象
             InputStream inputStream = req.getInputStream();
-            ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-            Invocation invocation = (Invocation) objectInputStream.readObject();
+            ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);//从流中获取数据
+            Invocation invocation = (Invocation) objectInputStream.readObject();//从流中读取数据反序列话成实体类
 
             // 2.从Invocation对象中拿出实现类、方法、参数类型列表和参数列表
 
-            Class implClass = LocalRegisterFactory.getLocalRegister(RegisterType.LOCAL).get(invocation.getInterfaceName());// 从本地注册中拿出实现类
+            String interfaceName = invocation.getInterfaceName();
+            Class implClass = LocalRegisterFactory.getLocalRegister(RegisterType.LOCAL).get(interfaceName);// 从本地注册中拿出实现类
 
             Method method = implClass.getMethod(invocation.getMethodName(), invocation.getParamTypes());// 拿出method对象
 
-            String result = (String) method.invoke(implClass.newInstance(), invocation.getParams());// 执行方法，由于知道实现类返回String，所以先强转成String
+            String result = (String) method.invoke(implClass.newInstance(), invocation.getParams());// 通过反射执行方法，由于知道实现类返回String，所以先强转成String
 
             IOUtils.write(result, resp.getOutputStream());// 把result返回给HttpClient
         } catch (IOException e) {

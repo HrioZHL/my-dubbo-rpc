@@ -5,5 +5,5 @@ import org.apache.dubbo.common.extension.SPI;
 
 @SPI
 public interface Driver {
-    public void driverCar(URL url);
+    void driverCar(URL url);
 }
